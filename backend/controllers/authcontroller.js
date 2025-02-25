@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';  
 import jwt from 'jsonwebtoken';
 import userModel from '../models/usermodel.js';
+import { text } from 'express';
+import transporter from '../config/nodemailer.js';
 
 
 export const register = async (req, res) => {
@@ -35,6 +37,18 @@ export const register = async (req, res) => {
             'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000
         }); //token is stored in cookie
+
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: email,
+            subject: "Welcome Onboard",
+            text: `Welcome to KFM Broadcast Your account has been created successfully with the email id:${email}`,
+           
+
+        }
+
+        await transporter.sendMail(mailOptions); //email is sent to the user
+
 
         return res.json({success: true});
 
