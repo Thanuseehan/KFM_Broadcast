@@ -278,3 +278,138 @@ export const verifyEmail = async (req, res) => {
         return res.json({ success: false, message: error.message });
     }
 };
+
+export const isAuthenticated = async (req, res) => {
+    try {
+        return res.json({ success: true });
+    } catch (error) {  // Add (error) inside catch
+        res.json({ success: false, message: error.message });
+    }
+};
+
+
+//send reset otp 
+
+export const sendResetOtp = async (req, res) => {
+
+    const {email} = req.body;
+
+    if (!email) {
+        return res.json({ success: false, message: "Email is required" });
+    }
+
+    try{
+
+        const user = await userModel.findOne({email});
+        if(!user){
+            return res.json({success: false, message: "User not found"});
+        }
+
+
+        const otp = String(Math.floor(100000 + Math.random() * 900000));
+
+        // Store OTP in user document
+        user.resetotp = otp;
+        user.resetotpExpires = Date.now() + 24 * 60 * 60 * 1000  
+        await user.save();
+
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: user.email,
+            subject: "🔑 Password reset otp",
+            html: `
+                <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 20px; border: 1px solid #ddd; border-radius: 10px; max-width: 600px; margin: auto;">
+                    
+                    <!-- Header with Logo -->
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="color: #0056b3; margin: 0;">Account Verification</h2>
+                        <img src="cid:companyLogo" alt="KFM Broadcast Logo" style="width: 100px; height: auto;">
+                    </div>
+        
+                    <p>Dear <strong>${user.name}</strong>,</p>
+        
+                    <p>Your OTP for Password reset is:  
+                        <span style="display: inline-block; background: #0056b3; color: white; font-size: 20px; font-weight: bold; padding: 10px 20px; border-radius: 5px;">${otp}</span>
+                    </p>
+        
+                    <p>This OTP is valid for <strong>10 minutes</strong>. Please do not share it with anyone.</p>
+        
+                    <p>If you did not request this Password reset, please ignore this email.</p>
+        
+                    <hr style="border: 0; height: 1px; background: #ccc; margin: 20px 0;">
+        
+                    <!-- Email Signature -->
+                    <div style="margin-top: 20px;">
+                        <p style="font-size: 14px; color: #555;">
+                            Best Regards,<br>
+                            <strong>KFM Broadcast Team</strong><br>
+                            📧 <a href="mailto:support@kfmbroadcast.com" style="color: #0056b3;">support@kfmbroadcast.com</a><br>
+                            📞 +1 (234) 567-8900<br>
+                            🌐 <a href="https://kfmbroadcast.com" style="color: #0056b3;">www.kfmbroadcast.com</a>
+                        </p>
+                    </div>
+                </div>
+            `,
+            attachments: [
+                {
+                    filename: "KFM_Broadcast.png",
+                    // path: "Images/KFM Broadcast.png",
+                    cid: "companyLogo" // Content ID for inline image
+                }
+            ]
+
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        return res.json({success: true, message: 'OTP sent to your mail'});
+
+        
+
+    } catch(error){
+        return res.json({ success: false, message: error.message });
+
+    }
+
+};
+
+export const resetPassword = async(req, res)=>{
+    const {email, otp, newPassword} = req.body;
+
+    if(!email || !otp || !newPassword){
+        return res.json({success: false, message:'Email, OTP and new password are required'});
+    }
+
+    try{
+
+        const user = await userModel.findOne({email});
+
+        if(!user){
+            return res.json({success: false, message: 'user not found'})
+        }
+
+        if(user.resetotp == "" || user.resetotp !== otp){
+            return res.json({success: false, message: 'Invalaid OTP'})
+
+        }
+
+        if(user.resetotpExpires < Date.now()){
+            return res.json({success: false, message:'OTP Expired'});
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        user.resetotp = '';
+        user.resetotpExpires = 0;
+
+        await user.save();
+
+        return res.json({success: true, message: 'Password has been reset Successfully'});
+
+
+    }catch(error){
+        return res.json({ success: false, message: error.message });
+
+    }
+
+};
