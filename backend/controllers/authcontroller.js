@@ -168,9 +168,9 @@ export const sendVerifyOtp = async (req, res) => {
         // Find user in the database
         const user = await userModel.findById(userId);
 
-        if (!user) {
-            return res.json({ success: false, message: "User not found" });
-        }
+        // if (!user) {
+        //     return res.json({ success: false, message: "User not found" });
+        // }
 
         if (user.isAccountVerified) {
             return res.json({ success: false, message: "Account already verified" });
@@ -181,6 +181,7 @@ export const sendVerifyOtp = async (req, res) => {
 
         // Store OTP in user document
         user.verifyOtp = otp;
+        user.verifyOtpExpires = Date.now() + 24 * 60 * 60 * 1000  
         await user.save();
 
         // Define email options
@@ -188,9 +189,48 @@ export const sendVerifyOtp = async (req, res) => {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: "🔑 Account Verification OTP",
-            text: `Your OTP to verify your account is: ${otp}. It is valid for 10 minutes.`
+            html: `
+                <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 20px; border: 1px solid #ddd; border-radius: 10px; max-width: 600px; margin: auto;">
+                    
+                    <!-- Header with Logo -->
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="color: #0056b3; margin: 0;">Account Verification</h2>
+                        <img src="cid:companyLogo" alt="KFM Broadcast Logo" style="width: 100px; height: auto;">
+                    </div>
+        
+                    <p>Dear <strong>${user.name}</strong>,</p>
+        
+                    <p>Your OTP for account verification is:  
+                        <span style="display: inline-block; background: #0056b3; color: white; font-size: 20px; font-weight: bold; padding: 10px 20px; border-radius: 5px;">${otp}</span>
+                    </p>
+        
+                    <p>This OTP is valid for <strong>10 minutes</strong>. Please do not share it with anyone.</p>
+        
+                    <p>If you did not request this verification, please ignore this email.</p>
+        
+                    <hr style="border: 0; height: 1px; background: #ccc; margin: 20px 0;">
+        
+                    <!-- Email Signature -->
+                    <div style="margin-top: 20px;">
+                        <p style="font-size: 14px; color: #555;">
+                            Best Regards,<br>
+                            <strong>KFM Broadcast Team</strong><br>
+                            📧 <a href="mailto:support@kfmbroadcast.com" style="color: #0056b3;">support@kfmbroadcast.com</a><br>
+                            📞 +1 (234) 567-8900<br>
+                            🌐 <a href="https://kfmbroadcast.com" style="color: #0056b3;">www.kfmbroadcast.com</a>
+                        </p>
+                    </div>
+                </div>
+            `,
+            attachments: [
+                {
+                    filename: "KFM_Broadcast.png",
+                    // path: "Images/KFM Broadcast.png",
+                    cid: "companyLogo" // Content ID for inline image
+                }
+            ]
         };
-
+        
         // Send email with OTP
         await transporter.sendMail(mailOptions);
 
@@ -200,46 +240,41 @@ export const sendVerifyOtp = async (req, res) => {
     }
 };
 
+
+
 export const verifyEmail = async (req, res) => {
+    const { userId, otp } = req.body;
 
-    const { userId , otp } = req.body;
-
-    if(!userId || !otp){
-        return res.json({success: false, message: "All fields are required"});
+    if (!userId || !otp) {
+        return res.json({ success: false, message: "All fields are required" });
     }
 
-    try{
+    try {
         const user = await userModel.findById(userId);
 
-        if(!user){
-            return res.json({success: false, message: "User not found"});
+        if (!user) {
+            return res.json({ success: false, message: "User not found" });
         }
 
-        if(user.verifyOtp !== '' || user.verifyOtp !== otp){
-            return res.json({success: false, message: "Invalid OTP"});
-        }
-
-        if (user.verifyOtpExpireAt < Date.now()) {
+        // Check if OTP has expired
+        if (user.verifyOtpExpires < Date.now()) {
             return res.json({ success: false, message: "OTP has expired" });
         }
 
+        // Validate OTP
+        if (user.verifyOtp === '' || user.verifyOtp !== otp) {
+            return res.json({ success: false, message: "Invalid OTP" });
+        }
+
+        // Verify the account
         user.isAccountVerified = true;
-        user.verifyOtp = '';
-        user.verifyOtpExpireAt = 0;
+        user.verifyOtp = ''; // Clear OTP after verification
+        user.verifyOtpExpires = 0; // Reset expiry time
 
         await user.save();
 
-        return res.json({success: true, message: "Account verified"});
-
-
+        return res.json({ success: true, message: "Account verified" });
+    } catch (error) {
+        return res.json({ success: false, message: error.message });
     }
-    catch{
-
-        return res.json({success: false, message: error.message});
-    }
-
-
-
-
-
 };
