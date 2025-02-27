@@ -15,4 +15,8 @@ authRouter.post('/is-auth', userAuth, isAuthenticated);  // ✅ FIXED
 authRouter.post('/send-reset-tp', sendResetOtp);  // ✅ FIXED
 authRouter.post('/reset-password', resetPassword);  // ✅ FIXED
 
+
+
+
+
 export default authRouter;
