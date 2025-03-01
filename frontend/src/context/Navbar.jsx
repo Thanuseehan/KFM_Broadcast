@@ -1,22 +1,16 @@
-import React from 'react'
+import React from 'react';
 import { assets } from "../assets/assets.js";
-import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-
-    const navigate = useNavigate();
-
-
   return (
-    <div className='w-full flex justify-between items-center p-4 sm:p-6 sm:px-24 absolute top-0'>
-      <img src={assets.logo} alt="" className='w-28 sm:w-32'/>
-      <button onClick={()=>navigate('/login')}
-      className='flex items-center gap-2 border border-white rounded-full px-6 py-2 text-white hover:bg-gray-100  hover:text-black transition-all'>
-        Login <img src={assets.arrow_icon} alt="" />
-        </button>
+    <div className='w-full flex items-center justify-between p-4 sm:p-6 sm:px-24 absolute top-0'>
+      {/* Left Side - Logo */}
+      <img src={assets.logo} alt="logo" className='w-52 sm:w-72 md:w-60 lg:w-86' />
+
+      {/* Right Side - KFM_Broadcast_White Image */}
+      <img src={assets.KFM_Broadcast_White} alt="KFM Broadcast" className='w-40 sm:w-52 md:w-60 lg:w-72' />
     </div>
-  )
+  );
 }
 
-export default Navbar
-                 
+export default Navbar;
