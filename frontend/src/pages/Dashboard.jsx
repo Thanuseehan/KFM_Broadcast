@@ -7,7 +7,7 @@ const Dashboard = () => {
 
   const adminPanelButtons = [
     { name: "Player Details", path: "/PlayerDetails" },
-    { name: "Control Panel", path: "/ControlPannel", popup: true }, // Only this will open as a popup
+    { name: "Control Panel", path: "/ControlPanel", popup: true }, // Only this will open as a popup
   ];
 
   const streamPanelButtons = [

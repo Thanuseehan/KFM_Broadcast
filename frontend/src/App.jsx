@@ -14,6 +14,7 @@ import PlayerStatus from './pages/PlayerStatus'
 import TeamPointsDetails from './pages/TeamPointsDetails'
 import TopBuys from './pages/TopBuys'
 import PointsDetails from './pages/PointsDetails'
+import ControlPanel from './pages/ControlPannel'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/playerstatus" element={<PlayerStatus />} />
         <Route path="/topbuys" element={<TopBuys />} />
         <Route path="/pointsdetails" element={<PointsDetails />} />
+        <Route path="/controlpanel" element={<ControlPanel />} />
 
 
 
