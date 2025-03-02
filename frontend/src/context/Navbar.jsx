@@ -3,7 +3,7 @@ import { assets } from "../assets/assets.js";
 
 const Navbar = () => {
   return (
-    <div className='w-full flex items-center justify-between p-2 sm:p-5 sm:px-12 absolute top-4 h-16 bg-opacity-80'>
+    <div className='w-full flex items-center justify-between p-2 sm:p-5 sm:px-12 sticky top-0 h-16 bg-opacity-80 backdrop-blur-lg z-50'>
       {/* Left Side - Logo */}
       <img src={assets.logo} alt="logo" className='w-36 sm:w-44 md:w-48' />
 
