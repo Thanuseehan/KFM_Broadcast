@@ -4,6 +4,7 @@ import Navbar from '../context/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';  
 import axios from 'axios'; 
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -28,16 +29,16 @@ const Login = () => {
                     setIsLoggedin(true);
                     navigate('/dashboard');
                 } else {
-                    alert(data.error);
+                    toast.error(data.message);
                 }
-            } else {
+            } else { 
                 const { data } = await axios.post(`${backendUrl}/api/auth/login`, { email, password });
 
                 if (data.success) {
                     setIsLoggedin(true);
                     navigate('/dashboard');
                 } else {
-                    alert(data.error);
+                    toast.error(data.error);
                 }
             }
         } catch (error) {

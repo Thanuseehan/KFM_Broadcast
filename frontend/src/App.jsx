@@ -15,11 +15,14 @@ import PlayerStatus from './pages/PlayerStatus'
 import TeamPointsDetails from './pages/TeamPointsDetails'
 import TopBuys from './pages/TopBuys'
 import PointsDetails from './pages/PointsDetails'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
