@@ -7,8 +7,8 @@ const Dashboard = () => {
 
   // Admin Panel Buttons
   const adminPanelButtons = [
-    { name: "Player Details", path: "/playerdetails" },
-    { name: "Control Panel", path: "/controlpannel" },
+    { name: "Player Details", path: "/PlayerDetails" },
+    { name: "Control Panel", path: "/ControlPannel" },
   ];
 
   // Stream Panel Buttons
