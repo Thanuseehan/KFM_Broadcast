@@ -29,11 +29,10 @@ const Dashboard = () => {
   const handleButtonClick = (btn) => {
     if (btn.popup) {
       // Open Control Panel in a popup window
-      window.open(
-        btn.path,
-        "_blank",
-        "width=800,height=600,top=100,left=200,resizable=no,scrollbars=yes"
-      );
+      window.open(btn.path, "_blank", "width=800,height=600,top=100,left=200");
+    } else if (streamPanelButtons.some((item) => item.path === btn.path)) {
+      // Open Stream Panel pages in a new tab
+      window.open(btn.path, "_blank");
     } else {
       // Navigate normally for other buttons
       navigate(btn.path);
@@ -74,7 +73,7 @@ const Dashboard = () => {
           {streamPanelButtons.map((btn) => (
             <button
               key={btn.name}
-              onClick={() => navigate(btn.path)}
+              onClick={() => handleButtonClick(btn)}
               className="bg-blue-500 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-600 transition-all w-56"
             >
               {btn.name}
