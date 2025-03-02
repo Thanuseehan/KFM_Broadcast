@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext} from 'react'
 import { assets } from '../assets/assets';
 import Navbar from '../context/Navbar'
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';  // ✅ Import the context
+import { AppContent, AppContext } from '../context/AppContext';  // ✅ Import the context
 
 
 const Login = () => {
     
     const navigate = useNavigate();
 
-    const { backendUrl, setIsLoggedin } = useContext(AppContext);  // ✅ Get the backend URL from context
+    const {backendUrl} = useContext(AppContent);  // ✅ Get the backend URL from context
 
     const [state, setState] = useState('Sign up')
     const [name, setName] = useState('')

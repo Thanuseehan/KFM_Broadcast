@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export const AppContext = createContext();  // ✅ Create the context
+export const AppContent = createContext();  // ✅ Create the context
 
 export const AppContextProvider = (props) => {
 
@@ -12,7 +12,6 @@ export const AppContextProvider = (props) => {
     backendUrl,
     isLoggedin, setIsLoggedin,
     userData, setUserData
-
   };
 
   return (
