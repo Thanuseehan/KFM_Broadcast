@@ -3,7 +3,7 @@ import React from 'react'
 const ControlPannel = () => {
   return (
     <div>
-      <h1>Control pannel </h1>
+      <h1>ControlPannel Details</h1>
     </div>
   )
 }
