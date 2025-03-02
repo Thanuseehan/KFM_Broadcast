@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { assets } from '../assets/assets';
 import Navbar from '../context/Navbar'
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';  // ✅ Import the context
 
 
 const Login = () => {
     
     const navigate = useNavigate();
+
+    const { backendUrl, setIsLoggedin } = useContext(AppContext);  // ✅ Get the backend URL from context
 
     const [state, setState] = useState('Sign up')
     const [name, setName] = useState('')
@@ -27,12 +30,12 @@ const Login = () => {
           {state === 'Sign up' ? 'Create your account' : 'Login to your account!'}
         </p>
 
-        <form>
+        <form onSubmit={onsubithandler} >
           {state === 'Sign up' && (
             <div className='mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#333A5C] border border-gray-300'>
               <img src={assets.person_icon} alt=""/>
               <input 
-                onChange={e => setName(e.target.value)} 
+                onChange={e=>setName(e.target.value)} 
                 value={name}
                 className='bg-transparent outline-none' 
                 type="text" 
