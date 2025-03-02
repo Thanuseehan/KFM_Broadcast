@@ -45,7 +45,6 @@ const ControlPanel = () => {
   const [filteredPlayers, setFilteredPlayers] = useState(samplePlayers);
   const [selectedValue, setSelectedValue] = useState(""); // Dropdown remains empty
 
-  // Handle search input change
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
@@ -55,19 +54,19 @@ const ControlPanel = () => {
     setFilteredPlayers(filtered);
   };
 
-  // Handle selecting a player from search results
   const handleSelectPlayer = (player) => {
     setFormData(player);
     setSearchTerm(player.playerName);
+    setFilteredPlayers([]); // Hide search suggestions after selection
   };
+  
 
-  // Handle button clicks to set dropdown value
   const handleButtonClick = (value) => {
     setSelectedValue(value);
   };
 
   return (
-    <div>
+    <div className="wrapper">
       {/* Player Info Container */}
       <div className="container">
         <h2>Player Details</h2>
@@ -109,41 +108,78 @@ const ControlPanel = () => {
             <div className="form-group">
               <label>Player Image:</label>
               <img src={formData.imageUrl} alt="Preview" className="preview-img" />
+              <button className="display-button">Display</button>
+
             </div>
+            
           )}
         </form>
       </div>
 
-      {/* Separate Container for Dropdown & Buttons */}
-      <div className="dropdown-container">
-        <h3>Adding Points</h3>
 
-        {/* Dropdown Box (Initially Empty) */}
-        <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
-          <option value="">Select</option>
-        </select>
 
-        {/* Buttons to Select Dropdown Value */}
-        <div className="button-group">
-          {[1000, 2000, 3000, 5000].map((val) => (
-            <button key={val} type="button" onClick={() => handleButtonClick(val)}>
-              {val}
-            </button>
-          ))}
-        </div>
-      </div>
+     
+      <div className="dropdown-row">
+  {/* First Dropdown Container */}
+  <div className="dropdown-container">
+    <h3>Adding Points</h3>
+    <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
+      <option value="">Select</option>
+    </select>
+    <div className="button-group">
+      {[1000, 2000, 3000, 5000].map((val) => (
+        <button key={val} type="button" onClick={() => handleButtonClick(val)}>
+          {val}
+        </button>
+      ))}
+    </div>
+    <button className="add-button">Add</button>
+  </div>
+
+  {/* Second Dropdown Container */}
+  <div className="dropdown-container">
+    <h3>Price</h3>
+    <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
+      <option value="">Select</option>
+    </select>
+    <div className="button-group">
+      {[50, 100, 200, 500, 1000].map((val) => (
+        <button key={val} type="button" onClick={() => handleButtonClick(val)}>
+          {val}
+        </button>
+      ))}
+    </div>
+    <button className="add-button">Add</button>
+    </div>
+  </div>
+
+
+
+
 
       <style>
         {`
+          .wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 20px;
+          }
+
           .container {
             max-width: 350px;
-            margin: auto;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif;
+            margin-right: 20px;
           }
+
+          h2 {
+            text-align: center;
+          }
+
           .search-box {
             width: 100%;
             padding: 6px;
@@ -151,38 +187,49 @@ const ControlPanel = () => {
             border: 1px solid #ccc;
             border-radius: 4px;
           }
+
           .search-results {
             list-style: none;
             padding: 0;
-            max-height: 100px;
+            max-height: 90px;
+            max-width:10px /* Reduced height */
             overflow-y: auto;
             border: 1px solid #ddd;
             margin-bottom: 10px;
             border-radius: 4px;
             background: white;
             position: absolute;
-            width: 100%;
+            width: 20%;
             z-index: 1;
+            font-size: 12px; /* Smaller font */
           }
+
           .search-results li {
-            padding: 5px;
+            padding: 4px; /* Less padding */
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px; /* Reduced text size */
           }
+
           .search-results li:hover {
             background-color: #f0f0f0;
           }
+
+
+
           .form {
             display: flex;
             flex-direction: column;
           }
+
           .form-group {
             margin-bottom: 8px;
           }
+
           label {
             font-size: 14px;
             font-weight: bold;
           }
+
           input {
             width: 100%;
             padding: 5px;
@@ -192,6 +239,7 @@ const ControlPanel = () => {
             background-color: #f5f5f5;
             cursor: not-allowed;
           }
+
           .preview-img {
             width: 100px;
             height: 100px;
@@ -204,8 +252,6 @@ const ControlPanel = () => {
           /* Dropdown Section */
           .dropdown-container {
             max-width: 350px;
-            margin: auto;
-            margin-top: 20px;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -213,17 +259,20 @@ const ControlPanel = () => {
             background-color: #f9f9f9;
             text-align: center;
           }
+
           select {
             width: 100%;
             padding: 6px;
             border: 1px solid #ccc;
             border-radius: 4px;
           }
+
           .button-group {
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
           }
+
           .button-group button {
             flex: 1;
             margin: 0 5px;
@@ -235,8 +284,54 @@ const ControlPanel = () => {
             color: white;
             cursor: pointer;
           }
+
           .button-group button:hover {
             background-color: #0056b3;
+          }
+            
+          .select-button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 6px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s ease;
+          }
+
+          .select-button:hover {
+            background-color: #0056b3;
+          }
+
+          .select-button.active {
+            background-color: #28a745; /* Green for selected button */
+          }
+
+          .add-button,
+          .display-button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+          }
+
+          .display-button {
+            background-color: #17a2b8;
+          }
+
+          .add-button:hover {
+            background-color: #218838;
+          }
+
+          .display-button:hover {
+            background-color: #138496;
           }
         `}
       </style>
