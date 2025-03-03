@@ -8,6 +8,7 @@ import header_img from './header_img.png'
 import KFM_Broadcast_White from './KFM _Broadcast_White.png'
 import Bgimg from './Bgimgprw.jpg'
 import frntbg from './frntbg.png'
+import lgs from './lgs.png'
 
 export const assets = {
     arrow_icon,
@@ -19,5 +20,6 @@ export const assets = {
     header_img,
     KFM_Broadcast_White,
     Bgimg,
-    frntbg
+    frntbg,
+    lgs
 }
