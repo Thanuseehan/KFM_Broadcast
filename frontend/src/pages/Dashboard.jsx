@@ -11,13 +11,15 @@ const Dashboard = () => {
   ];
 
   const streamPanelButtons = [
+    { name: "Live Dashboard", path: "/previewdashboard" },
+    { name: "Preview", path: "/preview" },
     { name: "New Teams", path: "/newteams" },
     { name: "Player Status", path: "/playerstatus" },
     { name: "Points Details", path: "/pointsdetails" },
-    { name: "Preview", path: "/preview" },
     { name: "Teams and Members", path: "/teamandmembers" },
     { name: "Team Points Details", path: "/teampointsdetails" },
     { name: "Top Buys", path: "/topbuys" },
+
   ];
 
   const specialButtons = [

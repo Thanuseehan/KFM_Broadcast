@@ -6,6 +6,7 @@ import person_icon from './person_icon.svg'
 import hand_wave from './hand_wave.png'
 import header_img from './header_img.png'
 import KFM_Broadcast_White from './KFM _Broadcast_White.png'
+import Bgimg from './Bgimgprw.jpg'
 
 export const assets = {
     arrow_icon,
@@ -15,5 +16,6 @@ export const assets = {
     person_icon,
     hand_wave,
     header_img,
-    KFM_Broadcast_White
+    KFM_Broadcast_White,
+    Bgimg
 }
