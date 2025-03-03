@@ -19,7 +19,7 @@ const PreviewDashboard = () => {
 
   return (
     <div style={backgroundStyle}>
-<LiveHeader leftTitle="VM Trophy Session 3 - 2025" rightTitle="Powered by KFM" />
+<LiveHeader leftTitle="VM Trophy Session 3 - 2025" rightTitle="KFM Broadcast" />
 <div style={{ marginTop: "60px", padding: "20px", color: "white" }}>
         <h1>Welcome to the Preview Dashboard</h1>
       </div>
