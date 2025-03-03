@@ -1,5 +1,7 @@
 import React from "react";
+import LiveHeader from "../components/LiveHeader"; // Adjust path if needed
 import { assets } from "../assets/assets"; // Ensure correct path
+
 
 const PreviewDashboard = () => {
   const backgroundStyle = {
@@ -12,10 +14,15 @@ const PreviewDashboard = () => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "column",
   };
 
   return (
     <div style={backgroundStyle}>
+      <LiveHeader title="VM Trophy Session - 03 2025" />
+      <div style={{ marginTop: "60px", padding: "20px", color: "white" }}>
+        <h1>Welcome to the Preview Dashboard</h1>
+      </div>
     </div>
   );
 };

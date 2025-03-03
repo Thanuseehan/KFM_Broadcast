@@ -7,6 +7,7 @@ import hand_wave from './hand_wave.png'
 import header_img from './header_img.png'
 import KFM_Broadcast_White from './KFM _Broadcast_White.png'
 import Bgimg from './Bgimgprw.jpg'
+import frntbg from './frntbg.png'
 
 export const assets = {
     arrow_icon,
@@ -17,5 +18,6 @@ export const assets = {
     hand_wave,
     header_img,
     KFM_Broadcast_White,
-    Bgimg
+    Bgimg,
+    frntbg
 }
