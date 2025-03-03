@@ -191,7 +191,7 @@ const ControlPanel = () => {
     {/* Extra 6 Buttons */}
     <div className="button-group">
       {["Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6"].map((label, index) => (
-        <button key={index} type="button" onClick={() => handleExtraButtonClick(label)}>
+        <button key={index} type="button" onClick={() => /*handleExtraButtonClick*/(label)}>
           {label}
         </button>
       ))}
