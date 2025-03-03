@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const samplePlayers = [
   {
@@ -43,7 +43,10 @@ const ControlPanel = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPlayers, setFilteredPlayers] = useState(samplePlayers);
-  const [selectedValue, setSelectedValue] = useState(""); // Dropdown remains empty
+  const [selectedValue, setSelectedValue] = useState("");
+  const [time, setTime] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const timerRef = useRef(null);
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -57,13 +60,44 @@ const ControlPanel = () => {
   const handleSelectPlayer = (player) => {
     setFormData(player);
     setSearchTerm(player.playerName);
-    setFilteredPlayers([]); // Hide search suggestions after selection
+    setFilteredPlayers([]);
   };
-  
 
   const handleButtonClick = (value) => {
     setSelectedValue(value);
   };
+
+  const startTimer = () => {
+    if (!timerRunning) {
+      setTimerRunning(true);
+      setTime(12); // Reset to 12 seconds before starting
+      timerRef.current = setInterval(() => {
+        setTime((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(timerRef.current);
+            setTimerRunning(false);
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+  };
+
+  const stopTimer = () => {
+    setTimerRunning(false);
+    clearInterval(timerRef.current);
+    timerRef.current = null;
+  };
+
+  const resetTimer = () => {
+    setTime(12);
+    setTimerRunning(false);
+    clearInterval(timerRef.current);
+    timerRef.current = null;
+  };
+
+
 
   return (
     <div className="wrapper">
@@ -138,20 +172,69 @@ const ControlPanel = () => {
 
   {/* Second Dropdown Container */}
   <div className="dropdown-container">
-    <h3>Price</h3>
-    <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
-      <option value="">Select</option>
-    </select>
+  <h3>Price</h3>
+  
+  {/* Dropdown */}
+  <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
+    <option value="">Select</option>
+  </select>
+
+  {/* Value Buttons */}
+  <div className="button-group">
+    {[50, 100, 200, 500, 1000].map((val) => (
+      <button key={val} type="button" onClick={() => handleButtonClick(val)}>
+        {val}
+      </button>
+    ))}
+  </div>
+
+    {/* Extra 6 Buttons */}
     <div className="button-group">
-      {[50, 100, 200, 500, 1000].map((val) => (
-        <button key={val} type="button" onClick={() => handleButtonClick(val)}>
-          {val}
+      {["Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6"].map((label, index) => (
+        <button key={index} type="button" onClick={() => handleExtraButtonClick(label)}>
+          {label}
         </button>
       ))}
     </div>
+
+
+
+    {/* Add Button */}
     <button className="add-button">Add</button>
-    </div>
   </div>
+
+{/* third Dropdown Container */}
+  <div className="dropdown-container">
+      
+      <div className="status-container">
+        <label>Status:</label>
+        <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
+        <option value="">Select</option>
+        </select>
+        <div >
+          <button className="add-button">Sold</button>
+          <button className="add-button">Unsold</button>
+        </div>
+      </div>
+
+
+      
+  
+
+    </div>
+
+    <div className="dropdown-container">
+        <label>Timer: {time} seconds</label>
+        <div className="timer-buttons">
+          <button className="add-button" onClick={startTimer} disabled={timerRunning}>
+        Start
+      </button>
+      <button className="add-button" onClick={stopTimer}>End</button>
+      <button className="add-button" onClick={resetTimer}>Reset</button>
+        </div>
+      </div>
+    
+    </div>
 
 
 
@@ -338,5 +421,6 @@ const ControlPanel = () => {
     </div>
   );
 };
+
 
 export default ControlPanel;
