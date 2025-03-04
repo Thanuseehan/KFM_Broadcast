@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../context/Navbar";
 
+
 const PlayerDetails = () => {
   const [players, setPlayers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
