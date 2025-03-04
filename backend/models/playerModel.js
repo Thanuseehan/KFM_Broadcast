@@ -13,5 +13,5 @@ const playerSchema = new mongoose.Schema({
   profilePicture: { type: String },
 });
 
-const Player = mongoose.model("Player", playerSchema);
+const Player = mongoose.model('Player', playerSchema);
 module.exports = Player;
