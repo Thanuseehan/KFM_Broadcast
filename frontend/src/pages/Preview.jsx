@@ -1,14 +1,14 @@
 import React from "react";
 import { assets } from "../assets/assets"; // Ensure correct path
 import LiveHeader from "../components/LiveHeader";
-import { useTimer } from "./TimerContext"; // Ensure correct path
+import { TimerProvider, useTimer } from "./TimerContext"; // Ensure correct path
+
 
 import ControlPanel from "./ControlPannel"; // Ensure correct path
-import { TimerProvider } from "./TimerContext"; // Ensure correct path
 
 const Preview = () => {
 
-  const { time } = useTimer();
+  const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
 
   const backgroundStyle = {
     backgroundImage: `url(${assets.Bgimg})`,
@@ -27,6 +27,19 @@ const Preview = () => {
   };
 
   const dropdownStyle = {
+    maxWidth: "350px",
+    padding: "15px",
+    border: "1px solid rgba(255, 255, 255, 0.3)",
+    borderRadius: "8px",
+    boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.1)",
+    background: "rgba(255, 255, 255, 0.1)",
+    backdropFilter: "blur(10px)",
+    color: "white",
+    textAlign: "center",
+    marginTop: "20px",
+  };
+
+  const dropdownStyleRight = {
     maxWidth: "350px",
     padding: "15px",
     border: "1px solid rgba(255, 255, 255, 0.3)",
@@ -73,14 +86,26 @@ const Preview = () => {
         <h1>y</h1>
         <h1>BID by</h1>
         <h1>d</h1>
-        <h1>Timer</h1>
+
         <h1>{time} seconds</h1>
       </div>
+      
       <div>
-
+      <div style={dropdownStyleRight}>
+          <label>Timer: {time} seconds</label>
+          <div className="timer-buttons">
+            <button className="add-button" onClick={startTimer} disabled={timerRunning}>
+              Start
+            </button>
+            <button className="add-button" onClick={stopTimer}>End</button>
+            <button className="add-button" onClick={resetTimer}>Reset</button>
+          </div>
+        </div>
+    
+    </div>
 
         
-      </div>
+        
       </div>
 
 
