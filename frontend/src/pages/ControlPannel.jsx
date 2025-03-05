@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { TimerProvider, useTimer } from "./TimerContext"; // Ensure correct path
+import { assets } from "../assets/assets";
 
 const samplePlayers = [
   {
     key: 1,
-    playerName: "Virat Kohli",
+    playerName: "C . Sanjai",
     playerType: "Batsman",
-    age: 35,
-    basePrice: "10M",
+    age: 23,
+    basePrice: 1500,
     battingStyle: "Right-hand",
-    bowlingStyle: "Medium Pace",
-    originTeam: "RCB",
-    previousTournament: "IPL 2023",
+    bowlingStyle: "N/A",
+    originTeam: "Western Sports Club",
+    previousTournament: "KPL 2024",
     imageUrl: "https://via.placeholder.com/100",
   },
   {
