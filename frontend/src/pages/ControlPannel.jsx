@@ -12,7 +12,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Western Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "./images/k1.png",
+    imageUrl: "./images/k1.jpg",
   },
   {
     key: 2,
@@ -36,7 +36,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Young Rovers",
     previousTournament: "KPL 2024",
-    imageUrl: "./images/K2.png",
+    imageUrl: "./images/k6.png",
   },
   {
     key: 7,
@@ -48,7 +48,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Young Rovers",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k7.png",
   },
   {
     key: 8,
@@ -60,7 +60,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Young Rovers",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k8.png",
   },
   {
     key: 9,
@@ -72,7 +72,18 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Young Rovers",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k9.png",
+  },{
+    key: 10,
+    playerName: "Thivash",
+    playerType: "Batsman",
+    age: 24,
+    basePrice: 1000,
+    battingStyle: "Right-hand",
+    bowlingStyle: "N/A",
+    originTeam: "Young Rovers",
+    previousTournament: "N/A",
+    imageUrl: "./images/k10.png",
   },
   {
     key: 11,
@@ -84,7 +95,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Young Rovers",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k11.png",
   },
   {
     key: 12,
@@ -96,7 +107,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k12.png", // done
   },
   {
     key: 13,
@@ -108,7 +119,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k13.png",
   },
   {
     key: 14,
@@ -120,7 +131,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "Cric Breath 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k14.png",
   },{
     key: 15,
     playerName: "K Rokith",
@@ -131,7 +142,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k15.png",
   },{
     key: 16,
     playerName: "A Kemaraj",
@@ -142,7 +153,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "Cric Breath 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k16.png",
   },{
     key: 17,
     playerName: "G Sanujan",
@@ -153,7 +164,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k17.png",
   },{
     key: 18,
     playerName: "Mathujan",
@@ -164,7 +175,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k18.png",
   },{
     key: 19,
     playerName: "Kovi",
@@ -175,7 +186,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k19.png",
   },{
     key: 20,
     playerName: "Karishrathan",
@@ -186,7 +197,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k20.png",
   },{
     key: 21,
     playerName: "Jenu",
@@ -197,7 +208,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Varanam Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k21.png",
   },{
     key: 24,
     playerName: "Sajeev",
@@ -208,7 +219,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Everady Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k24.png",
   },{
     key: 26,
     playerName: "Loveshan",
@@ -219,7 +230,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Everady Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k26.png",
   },{
     key: 27,
     playerName: "Dhushanth",
@@ -230,7 +241,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Everady Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k27.png",
   },{
     key: 28,
     playerName: "Kirishanth",
@@ -241,7 +252,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Everady Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k28.png",
   },{
     key: 31,
     playerName: "T Sureshkumar",
@@ -252,7 +263,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Kavery Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k31.png",
   },{
     key: 33,
     playerName: "Krishanthan",
@@ -263,7 +274,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Kavery Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k33.png",
   },{
     key: 34,
     playerName: "T Kathurshan",
@@ -274,7 +285,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Golden Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k34.png",
   },{
     key: 35,
     playerName: "K Pithurshan",
@@ -285,7 +296,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Golden Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k35.png",
   },{
     key: 36,
     playerName: "V sathees",
@@ -296,7 +307,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Golden Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k36.png",
   },{
     key: 37,
     playerName: "J Sakeethan",
@@ -307,7 +318,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "ST - Joshep Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k37.png",
   },{
     key: 38,
     playerName: "D Vithukshan",
@@ -318,7 +329,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "ST - Joshep Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k38.png",
   },{
     key: 40,
     playerName: "A Lorinton",
@@ -329,7 +340,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "ST - Joshep Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k40.png",
   },{
     key: 41,
     playerName: "J Paranishanth",
@@ -340,7 +351,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Super Star Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k41.png",
   },{
     key: 43,
     playerName: "M M Indika",
@@ -351,7 +362,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Royal Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k43.png",
   },{
     key: 44,
     playerName: "P Hurman",
@@ -362,7 +373,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Royal Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k44.png",
   },{
     key: 45,
     playerName: "S Sujei",
@@ -373,7 +384,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Royal Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k45.png",
   },{
     key: 46,
     playerName: "P Tharshan",
@@ -384,7 +395,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Royal Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k46.png",
   },{
     key: 47,
     playerName: "S Harishoth",
@@ -395,7 +406,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Royal Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k47.png",
   },{
     key: 48,
     playerName: "V kishentharaj",
@@ -406,7 +417,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Youth Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k48.png",
   },
   {
     key: 50,
@@ -418,7 +429,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Youth Sports Club",
     previousTournament: "KIMA 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k50.png",
   },{
     key: 51,
     playerName: "Rishanth",
@@ -429,7 +440,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Youth Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k51.png",
   },{
     key: 52,
     playerName: "Prathees",
@@ -440,7 +451,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Youth Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k52.png",
   },{
     key: 53,
     playerName: "V Karan",
@@ -451,7 +462,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k53.png",
   },{
     key: 54,
     playerName: "T Sanoson",
@@ -462,7 +473,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k54.png",
   },{
     key: 55,
     playerName: "G Nathison",
@@ -473,7 +484,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k55.png",
   },{
     key: 56,
     playerName: "Rangan",
@@ -484,7 +495,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k56.png",
   },{
     key: 57,
     playerName: "T Kanna",
@@ -495,7 +506,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k57.png",
   },{
     key: 58,
     playerName: "T Shesan",
@@ -506,7 +517,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k58.png",
   },{
     key: 60,
     playerName: "S Abishanth",
@@ -517,7 +528,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Challengers Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k60.png",
   },{
     key: 62,
     playerName: "T Jeyahanth",
@@ -528,7 +539,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Shining Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k62.png",
   },{
     key: 63,
     playerName: "K Laxanth",
@@ -539,7 +550,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Shining Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k63.png",
   },{
     key: 64,
     playerName: "S Umakaran",
@@ -550,7 +561,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k64.png",
   },{
     key: 65,
     playerName: "Y Kobishan",
@@ -561,7 +572,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k65.png",
   },{
     key: 66,
     playerName: "G Sharujan",
@@ -572,7 +583,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k66.png",
   },{
     key: 67,
     playerName: "Kana",
@@ -583,18 +594,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
-  },{
-    key: 67,
-    playerName: "A H Sajeevan",
-    playerType: "Batsman",
-    age: 36,
-    basePrice: 1600,
-    battingStyle: "Right-hand",
-    bowlingStyle: "N/A",
-    originTeam: "Dolphin Sports Club",
-    previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k67.png",
   },{
     key: 69,
     playerName: "A H Sajeevan",
@@ -605,7 +605,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k69.png",
   },{
     key: 71,
     playerName: "Dinojan",
@@ -616,7 +616,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k71.png",
   },{
     key: 72,
     playerName: "K Kajan",
@@ -627,7 +627,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Dolphin Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k72.png",
   },{
     key: 74,
     playerName: "Dhanushan",
@@ -638,7 +638,8 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Dolphin Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/kunkown.jpg",
+
   },{
     key: 76,
     playerName: "Pergus",
@@ -649,7 +650,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Dolphin Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k76.png",
   },{
     key: 78,
     playerName: "P Aagash",
@@ -660,7 +661,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Winner Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k78.png",
   },{
     key: 79,
     playerName: "S Rusrtharan",
@@ -671,7 +672,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Winner Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k79.png",
   },{
     key: 80,
     playerName: "V Dharsan",
@@ -682,7 +683,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Winner Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k80.png",
   },{
     key: 81,
     playerName: "P Kobisan",
@@ -693,7 +694,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k81.png",
   },{
     key: 82,
     playerName: "L Arankumar",
@@ -704,7 +705,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k82.png",
   },{
     key: 83,
     playerName: "S Ajithraj",
@@ -715,7 +716,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k83.png",
   },{
     key: 84,
     playerName: "S Vithusan",
@@ -726,7 +727,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k84.png",
   },{
     key: 85,
     playerName: "S Ramesh",
@@ -737,7 +738,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k85.png",
   },{
     key: 86,
     playerName: "V Sahan",
@@ -748,7 +749,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k86.png",
   },{
     key: 88,
     playerName: "N Nirosh",
@@ -759,7 +760,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Vivekanantha Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k88.png",
   },{
     key: 89,
     playerName: "A Satheeskumar",
@@ -770,7 +771,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k89.png",
   },{
     key: 90,
     playerName: "N Dilakshan",
@@ -781,7 +782,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k90.png",
   },{
     key: 91,
     playerName: "P Lakshan",
@@ -792,7 +793,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k91.png",
   },{
     key: 92,
     playerName: "S shanjai",
@@ -803,7 +804,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k92.png",
   },{
     key: 93,
     playerName: "K Thushanthan",
@@ -814,7 +815,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k93.png",
   },{
     key: 94,
     playerName: "T Lakshan",
@@ -825,7 +826,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KIMA 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k94.png",
   },{
     key: 95,
     playerName: "K Nithushan",
@@ -836,7 +837,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KIMA 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k95.png",
   },
   {
     key: 96,
@@ -848,7 +849,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k96.png",
   },{
     key: 97,
     playerName: "R Kithushan",
@@ -859,7 +860,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k97.png",
   },{
     key: 98,
     playerName: "T Kobiraj",
@@ -870,7 +871,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k98.png",
   },{
     key: 99,
     playerName: "P Mithurshan",
@@ -881,7 +882,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k99.png",
   },
   {
     key: 100,
@@ -893,7 +894,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k100.png",
   },{
     key: 101,
     playerName: "T Rukshan",
@@ -904,7 +905,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k101.png",
   },
   {
     key: 102,
@@ -916,7 +917,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Ganthy \"G\" Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/kunkown.jpg",
   },{
     key: 103,
     playerName: "M M Dhammika",
@@ -927,7 +928,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Newpower Star \"K\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k103.png",
   },{
     key: 104,
     playerName: "R Dithurshan",
@@ -938,7 +939,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Newpower Star \"K\" Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k104.png",
   },{
     key: 105,
     playerName: "N Mithursan",
@@ -949,7 +950,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Newpower Star \"K\" Sports Club",
     previousTournament: "KIMA 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k105.png",
   },{
     key: 106,
     playerName: "M B Arokiyanathan",
@@ -960,7 +961,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Newpower Star \"K\" Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k106.png",
   },{
     key: 107,
     playerName: "Sujeilan",
@@ -971,7 +972,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "New Star - Che Sports Club",
     previousTournament: "N/A",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k107.png",
   },{
     key: 109,
     playerName: "K Anujan",
@@ -982,7 +983,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Everst S.T Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k109.png",
   },{
     key: 110,
     playerName: "M Nithushan",
@@ -993,7 +994,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Everst S.T Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k110.png",
   },{
     key: 111,
     playerName: "U Thajeevan",
@@ -1004,7 +1005,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Thulir Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k111.png",
   },{
     key: 113,
     playerName: "S Rejinold",
@@ -1015,7 +1016,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Thulir Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k113.png",
   },{
     key: 114,
     playerName: "T Sajee",
@@ -1026,7 +1027,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Thulir Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k114.png",
   },{
     key: 115,
     playerName: "T Bala",
@@ -1037,7 +1038,7 @@ const samplePlayers = [
     bowlingStyle: "Right-hand",
     originTeam: "Thulir Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "https://via.placeholder.com/100",
+    imageUrl: "./images/k115.png",
   },
 
 
