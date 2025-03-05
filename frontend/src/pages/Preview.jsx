@@ -2,12 +2,9 @@ import React from "react";
 import { assets } from "../assets/assets"; // Ensure correct path
 import LiveHeader from "../components/LiveHeader";
 import { TimerProvider, useTimer } from "./TimerContext"; // Ensure correct path
-
-
 import ControlPanel from "./ControlPannel"; // Ensure correct path
 
 const Preview = () => {
-
   const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
 
   const backgroundStyle = {
@@ -19,16 +16,16 @@ const Preview = () => {
     height: "100vh",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start", // Aligns content to the top-left
-    alignItems: "flex-start", // Aligns items to the left
-    paddingLeft: "50px", // Adds spacing from the left
-    paddingTop: "20px", // Adds spacing from the top
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    paddingLeft: "50px",
+    paddingTop: "20px",
     color: "white",
   };
 
   const dropdownStyle = {
     maxWidth: "350px",
-    padding: "15px",
+    padding: "10px",
     border: "1px solid rgba(255, 255, 255, 0.3)",
     borderRadius: "8px",
     boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.1)",
@@ -36,7 +33,9 @@ const Preview = () => {
     backdropFilter: "blur(10px)",
     color: "white",
     textAlign: "center",
-    marginTop: "20px",
+    marginTop: "10px",
+    fontSize: "20px",
+    fontWeight: "bold",
   };
 
   const dropdownStyleRight = {
@@ -50,22 +49,49 @@ const Preview = () => {
     color: "white",
     textAlign: "center",
     marginTop: "20px",
+    fontSize: "24px",
+    fontWeight: "bold",
   };
 
   const imageViewerStyle = {
-    maxWidth: "80%", // Controls max width of the image
-    height: "auto", // Adjusts height according to the aspect ratio
-    margin: "20px 0",
-    borderRadius: "8px", // Adds rounded corners to the image
-    boxShadow: "2px 2px 15px rgba(0, 0, 0, 0.3)", // Adds a shadow for a 3D effect
+    maxWidth: "80%",
+    height: "auto",
+    margin: "5px auto",
+    borderRadius: "8px",
+    boxShadow: "2px 2px 15px rgba(0, 0, 0, 0.3)",
+    display: "block",
   };
 
-  const imageContainerStyle = {
+  const cardStyle = {
+    width: "500px",
+    background: "rgba(255, 255, 255, 0.1)",
+    padding: "15px",
+    borderRadius: "8px",
+    backdropFilter: "blur(10px)",
+    border: "2px solid white",
+    color: "black",
+    textAlign: "center",
     display: "flex",
-    justifyContent: "flex-start", // Aligns horizontally at the start (left)
-    alignItems: "flex-start", // Aligns vertically at the top
-    flexDirection: "column", // Stacks children vertically
-    height: "auto", // Ensure the container height fits the content
+    flexDirection: "column",
+    alignItems: "center",
+    fontFamily: "Arial, sans-serif",
+  };
+
+  const tableStyle = {
+    width: "100%",
+    borderCollapse: "collapse",
+    marginTop: "10px",
+    textAlign: "left",
+  };
+
+  const thTdStyle = {
+    border: "1px solid black",
+    padding: "8px",
+  };
+
+  const titleStyle = {
+    fontSize: "24px",
+    fontWeight: "bold",
   };
 
   return (
@@ -76,43 +102,71 @@ const Preview = () => {
         <h1>Welcome to the Preview Dashboard</h1>
       </div>
 
-      {/* Left-Aligned Dropdown Section */}
       <div style={dropdownStyle}>
-      <h1>Preview</h1>
-        <div style={imageContainerStyle}>
-          <img src={assets.Bgimg} alt="Preview" style={imageViewerStyle} />
-        </div>
+        <h1>Preview</h1>
+        <img src={assets.Bgimg} alt="Preview" style={imageViewerStyle} />
         <h1>Current BID</h1>
         <h1>y</h1>
         <h1>BID by</h1>
         <h1>d</h1>
-
-        <h1>{time} seconds</h1>
+        {timerRunning && <h1>{time} seconds</h1>}
       </div>
-      
-      <div>
+
       <div style={dropdownStyleRight}>
-          <label>Timer: {time} seconds</label>
-          <div className="timer-buttons">
-            <button className="add-button" onClick={startTimer} disabled={timerRunning}>
-              Start
-            </button>
-            <button className="add-button" onClick={stopTimer}>End</button>
-            <button className="add-button" onClick={resetTimer}>Reset</button>
+        {timerRunning && <label>Timer: {time} Seconds Left</label>}
+        <div className="timer-buttons">
+          <button className="add-button" onClick={startTimer} disabled={timerRunning}>
+            Start
+          </button>
+          <button className="add-button" onClick={stopTimer}>End</button>
+          <button className="add-button" onClick={resetTimer}>Reset</button>
+        </div>
+        </div>
+
+
+        <div style={cardStyle}>
+          <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+            <h2 style={titleStyle}>Name</h2>
+            <h2>Player Type</h2>
+          </div>
+
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                <th style={thTdStyle} colSpan="2">General Information</th>
+                <th style={thTdStyle} colSpan="2">Career Information</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={thTdStyle}>Age</td>
+                <td style={thTdStyle}></td>
+                <td style={thTdStyle}>Batting Style</td>
+                <td style={thTdStyle}></td>
+              </tr>
+              <tr>
+                <td style={thTdStyle}>Origin Team</td>
+                <td style={thTdStyle}></td>
+                <td style={thTdStyle}>Bowling Style</td>
+                <td style={thTdStyle}></td>
+              </tr>
+              <tr>
+                <td style={thTdStyle} colSpan="2" rowSpan="2">
+                  <h3>Base Price</h3>
+                </td>
+                <td style={thTdStyle}>Previous Tournament</td>
+                <td style={thTdStyle}></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style={{ marginTop: "15px", fontSize: "20px", fontWeight: "bold" }}>
+            Sold / Unsold
           </div>
         </div>
-    
-    </div>
-
-        
-        
-      </div>
-
-
-
-     
-
+        </div>
   );
 };
+
 
 export default Preview;
