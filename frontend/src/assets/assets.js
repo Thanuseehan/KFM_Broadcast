@@ -21,5 +21,6 @@ export const assets = {
     KFM_Broadcast_White,
     Bgimg,
     frntbg,
-    lgs
+    lgs,
+    
 }
