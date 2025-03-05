@@ -3,6 +3,18 @@ import { TimerProvider, useTimer } from "./TimerContext"; // Ensure correct path
 
 const samplePlayers = [
   {
+    key: 1,
+    playerName: "K Dilakshan",
+    playerType: "All Rounder",
+    age: 29,
+    basePrice: 1600,
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-hand",
+    originTeam: "Western Sports Club",
+    previousTournament: "KPL 2024",
+    imageUrl: "./images/k1.png",
+  },
+  {
     key: 2,
     playerName: "C Sanjai",
     playerType: "Batsman",
@@ -12,7 +24,7 @@ const samplePlayers = [
     bowlingStyle: "N/A",
     originTeam: "Western Sports Club",
     previousTournament: "KPL 2024",
-    imageUrl: "./images/K1.png",
+    imageUrl: "./images/k2.png",
   },
   {
     key: 6,
