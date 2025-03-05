@@ -15,17 +15,17 @@ const Preview = () => {
     width: "100vw",
     height: "100vh",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",  // Horizontal alignment
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    paddingLeft: "50px",
+    paddingLeft: "30px",  // Adjusted to move content a little left
     paddingTop: "20px",
     color: "white",
   };
 
   const dropdownStyle = {
-    maxWidth: "350px",
-    padding: "10px",
+    maxWidth: "450px",  // Increased width for the container
+    padding: "15px",  // Increased padding for more space
     border: "1px solid rgba(255, 255, 255, 0.3)",
     borderRadius: "8px",
     boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.1)",
@@ -33,14 +33,16 @@ const Preview = () => {
     backdropFilter: "blur(10px)",
     color: "white",
     textAlign: "center",
-    marginTop: "10px",
-    fontSize: "20px",
+    marginTop: "250px",  // Keep the margin-top for positioning
+    marginBottom: "10px",
+    fontSize: "28px",  // Increased font size for text
     fontWeight: "bold",
+    marginLeft: "10px",  // Adjusted to move container left
   };
 
   const dropdownStyleRight = {
-    maxWidth: "350px",
-    padding: "15px",
+    maxWidth: "450px",  // Increased width for the container
+    padding: "20px",  // Increased padding for more space
     border: "1px solid rgba(255, 255, 255, 0.3)",
     borderRadius: "8px",
     boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.1)",
@@ -48,24 +50,27 @@ const Preview = () => {
     backdropFilter: "blur(10px)",
     color: "white",
     textAlign: "center",
-    marginTop: "20px",
-    fontSize: "24px",
+    marginTop: "100px",  // Adjusted margin-top for containers only
+    marginBottom: "10px",
+    fontSize: "24px",  // Increased font size for text
     fontWeight: "bold",
+    marginLeft: "30px",  // Adjusted to move container left
   };
 
   const imageViewerStyle = {
-    maxWidth: "80%",
+    maxWidth: "100%",  // Keep width responsive
     height: "auto",
     margin: "5px auto",
-    borderRadius: "8px",
+    borderRadius: "50px",
     boxShadow: "2px 2px 15px rgba(0, 0, 0, 0.3)",
     display: "block",
+    maxHeight: "500px", // Set a maximum height to prevent excessive scaling
   };
 
   const cardStyle = {
-    width: "500px",
+    width: "600px",  // Increased width of the card
     background: "rgba(255, 255, 255, 0.1)",
-    padding: "15px",
+    padding: "20px",  // Increased padding inside the card
     borderRadius: "8px",
     backdropFilter: "blur(10px)",
     border: "2px solid white",
@@ -75,12 +80,14 @@ const Preview = () => {
     flexDirection: "column",
     alignItems: "center",
     fontFamily: "Arial, sans-serif",
+    marginTop: "250px",  // Keep margin-top for card container
+    marginLeft: "20px",  // Adjusted to move container left
   };
 
   const tableStyle = {
     width: "100%",
     borderCollapse: "collapse",
-    marginTop: "10px",
+    marginTop: "10px", 
     textAlign: "left",
   };
 
@@ -90,7 +97,7 @@ const Preview = () => {
   };
 
   const titleStyle = {
-    fontSize: "24px",
+    fontSize: "32px",  // Increased title font size
     fontWeight: "bold",
   };
 
@@ -102,6 +109,7 @@ const Preview = () => {
         <h1>Welcome to the Preview Dashboard</h1>
       </div>
 
+      {/* Preview section */}
       <div style={dropdownStyle}>
         <h1>Preview</h1>
         <img src={assets.Bgimg} alt="Preview" style={imageViewerStyle} />
@@ -121,52 +129,51 @@ const Preview = () => {
           <button className="add-button" onClick={stopTimer}>End</button>
           <button className="add-button" onClick={resetTimer}>Reset</button>
         </div>
+      </div>
+
+      {/* Card-style table section */}
+      <div style={cardStyle}>
+        <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+          <h2 style={titleStyle}>Name</h2>
+          <h2>Player Type</h2>
         </div>
 
+        <table style={tableStyle}>
+          <thead>
+            <tr>
+              <th style={thTdStyle} colSpan="2">General Information</th>
+              <th style={thTdStyle} colSpan="2">Career Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={thTdStyle}>Age</td>
+              <td style={thTdStyle}></td>
+              <td style={thTdStyle}>Batting Style</td>
+              <td style={thTdStyle}></td>
+            </tr>
+            <tr>
+              <td style={thTdStyle}>Origin Team</td>
+              <td style={thTdStyle}></td>
+              <td style={thTdStyle}>Bowling Style</td>
+              <td style={thTdStyle}></td>
+            </tr>
+            <tr>
+              <td style={thTdStyle} colSpan="2" rowSpan="2">
+                <h3>Base Price</h3>
+              </td>
+              <td style={thTdStyle}>Previous Tournament</td>
+              <td style={thTdStyle}></td>
+            </tr>
+          </tbody>
+        </table>
 
-        <div style={cardStyle}>
-          <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-            <h2 style={titleStyle}>Name</h2>
-            <h2>Player Type</h2>
-          </div>
-
-          <table style={tableStyle}>
-            <thead>
-              <tr>
-                <th style={thTdStyle} colSpan="2">General Information</th>
-                <th style={thTdStyle} colSpan="2">Career Information</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={thTdStyle}>Age</td>
-                <td style={thTdStyle}></td>
-                <td style={thTdStyle}>Batting Style</td>
-                <td style={thTdStyle}></td>
-              </tr>
-              <tr>
-                <td style={thTdStyle}>Origin Team</td>
-                <td style={thTdStyle}></td>
-                <td style={thTdStyle}>Bowling Style</td>
-                <td style={thTdStyle}></td>
-              </tr>
-              <tr>
-                <td style={thTdStyle} colSpan="2" rowSpan="2">
-                  <h3>Base Price</h3>
-                </td>
-                <td style={thTdStyle}>Previous Tournament</td>
-                <td style={thTdStyle}></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div style={{ marginTop: "15px", fontSize: "20px", fontWeight: "bold" }}>
-            Sold / Unsold
-          </div>
+        <div style={{ marginTop: "15px", fontSize: "20px", fontWeight: "bold" }}>
+          Sold / Unsold
         </div>
-        </div>
+      </div>
+    </div>
   );
 };
-
 
 export default Preview;
