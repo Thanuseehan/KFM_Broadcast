@@ -18,6 +18,7 @@ const PlayerDetails = () => {
     profilePicture: null,
   });
 
+  
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;

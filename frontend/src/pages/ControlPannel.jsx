@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import { TimerProvider, useTimer } from "./TimerContext"; // Ensure correct path
 
 const samplePlayers = [
   {
@@ -44,9 +45,9 @@ const ControlPanel = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPlayers, setFilteredPlayers] = useState(samplePlayers);
   const [selectedValue, setSelectedValue] = useState("");
-  const [time, setTime] = useState(0);
-  const [timerRunning, setTimerRunning] = useState(false);
-  const timerRef = useRef(null);
+
+  const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
+  
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -67,36 +68,7 @@ const ControlPanel = () => {
     setSelectedValue(value);
   };
 
-  const startTimer = () => {
-    if (!timerRunning) {
-      setTimerRunning(true);
-      setTime(12); // Reset to 12 seconds before starting
-      timerRef.current = setInterval(() => {
-        setTime((prevTime) => {
-          if (prevTime <= 1) {
-            clearInterval(timerRef.current);
-            setTimerRunning(false);
-            return 0;
-          }
-          return prevTime - 1;
-        });
-      }, 1000);
-    }
-  };
-
-  const stopTimer = () => {
-    setTimerRunning(false);
-    clearInterval(timerRef.current);
-    timerRef.current = null;
-  };
-
-  const resetTimer = () => {
-    setTime(12);
-    setTimerRunning(false);
-    clearInterval(timerRef.current);
-    timerRef.current = null;
-  };
-
+  
 
 
   return (
@@ -223,16 +195,17 @@ const ControlPanel = () => {
 
     </div>
 
+    {/* Timer Section */}
     <div className="dropdown-container">
-        <label>Timer: {time} seconds</label>
-        <div className="timer-buttons">
-          <button className="add-button" onClick={startTimer} disabled={timerRunning}>
-        Start
-      </button>
-      <button className="add-button" onClick={stopTimer}>End</button>
-      <button className="add-button" onClick={resetTimer}>Reset</button>
+          <label>Timer: {time} seconds</label>
+          <div className="timer-buttons">
+            <button className="add-button" onClick={startTimer} disabled={timerRunning}>
+              Start
+            </button>
+            <button className="add-button" onClick={stopTimer}>End</button>
+            <button className="add-button" onClick={resetTimer}>Reset</button>
+          </div>
         </div>
-      </div>
     
     </div>
 
@@ -421,6 +394,10 @@ const ControlPanel = () => {
     </div>
   );
 };
-
+const App = () => (
+  <TimerProvider>
+    <ControlPanel />
+  </TimerProvider>
+);
 
 export default ControlPanel;
