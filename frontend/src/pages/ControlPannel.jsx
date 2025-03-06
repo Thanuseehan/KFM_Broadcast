@@ -1057,34 +1057,81 @@ const ControlPanel = () => {
     previousTournament: "",
     imageUrl: "",
   });
+  const [selectedTeam, setSelectedTeam] = useState(""); // Stores selected team
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredPlayers, setFilteredPlayers] = useState(samplePlayers);
-  const [selectedValue, setSelectedValue] = useState("");
+  const [teamPoints, setTeamPoints] = useState({
+    "Kirthik haishu Bros 11": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+    "AL Superkings": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+    "Romish Rockstar": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+    "Adrian Night": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+    "Dinesh 11 Dominators": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+    "VettryVinayakar": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+  });
 
-  const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
+  const handleAddPoints = (points) => {
+    if (!selectedTeam) {
+      alert("Please select a team before adding points.");
+      return;
+    }
+    setTeamPoints((prevPoints) => ({
+      ...prevPoints,
+      [selectedTeam]: {
+        ...prevPoints[selectedTeam],
+        extraAddedPoints: prevPoints[selectedTeam].extraAddedPoints + points,
+      },
+    }));
+  };
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredPlayers, setFilteredPlayers] = useState(samplePlayers);
+    const [selectedAddingPoints, setSelectedAddingPoints] = useState("");
+    const [selectedStatus, setSelectedStatus] = useState("");
+    const [selectedBasePrice, setSelectedBasePrice] = useState(0);
+    const [priceHistory, setPriceHistory] = useState([]);
+    const [selectedName, setSelectedName] = useState(""); // Define state for selected name
+    const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
   
-
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
     const filtered = samplePlayers.filter((player) =>
-      player.playerName.toLowerCase().includes(term)
+      player.key.toString().toLowerCase().includes(term) // Search by key
     );
     setFilteredPlayers(filtered);
   };
-
+  
   const handleSelectPlayer = (player) => {
     setFormData(player);
-    setSearchTerm(player.playerName);
+    setSelectedBasePrice(player.basePrice); // Set the base price when player is selected
+    setSearchTerm(player.key.toString());
     setFilteredPlayers([]);
   };
 
-  const handleButtonClick = (value) => {
-    setSelectedValue(value);
+  const handleExtraButtonClick = (name) => {
+    setSelectedName(name); // Update state with selected name
   };
 
+  const handleIncreasePrice = (amount) => {
+    setSelectedBasePrice((prevPrice) => {
+      const newPrice = prevPrice + amount;
+      setPriceHistory([...priceHistory, { playerName: formData.playerName, updatedPrice: newPrice }]);
+      return newPrice;
+    });
+  };
   
+  const handleSpendPoints = (points) => {
+    if (!selectedTeam) {
+      alert("Please select a team before spending points.");
+      return;
+    }
+    setTeamPoints((prevPoints) => ({
+      ...prevPoints,
+      [selectedTeam]: {
+        ...prevPoints[selectedTeam],
+        spentPoints: prevPoints[selectedTeam].spentPoints + points,
+      },
+    }));
+  };
 
 
   return (
@@ -1131,6 +1178,8 @@ const ControlPanel = () => {
               <label>Player Image:</label>
               <img src={formData.imageUrl} alt="Preview" className="preview-img" />
               <button className="display-button">Display</button>
+              <button className="display-button">Clear</button>
+
 
             </div>
             
@@ -1138,14 +1187,52 @@ const ControlPanel = () => {
         </form>
       </div>
 
-
+          
 
      
       <div className="dropdown-row">
+
+      <div className="dropdown-container">
+        <h3>Price</h3>
+        <p><strong>Current BID:</strong> {selectedBasePrice}</p>
+        {selectedName && (
+        <p><strong>BID By:</strong> {selectedName}</p>
+      )}
+
+        {/* Price Increase Buttons */}
+        <div className="button-group">
+          {[50, 100, 200, 500, 1000].map((val) => (
+            <button key={val} type="button" onClick={() => handleIncreasePrice(val)}>
+              +{val}
+            </button>
+          ))}
+        </div>
+    {/* Extra 6 Buttons */}
+    <div className="button-group">
+        {[
+          { label: "Kirthik haishu Bros 11", name: "Kirthik haishu Bros 11" },
+          { label: "AL Superkings", name: "AL Superkings" },
+          { label: "Romish Rockstar", name: "Romish Rockstar" },
+          { label: "Adrian Night", name: "Adrian Night" },
+          { label: "Dinesh 11 Dominators", name: "Dinesh 11 Dominators" },
+          { label: "VettryVinayakar", name: "VettryVinayakar" }
+        ].map((bidder, index) => (
+          <button key={index} type="button" onClick={() => handleExtraButtonClick(bidder.name)}>
+            {bidder.label}
+          </button>
+        ))}
+      </div>
+          
+
+
+    {/* Add Button */}
+    <button className="add-button">Add</button>
+  </div>
+
   {/* First Dropdown Container */}
-  <div className="dropdown-container">
-    <h3>Adding Points</h3>
-    <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
+    <div className="dropdown-container">
+     <h3>Adding Points</h3>
+       <select value={selectedAddingPoints} onChange={(e) => setSelectedAddingPoints(e.target.value)}>
       <option value="">Select</option>
       <option value="Kirthik">Kirthik</option>
         <option value="Al">Al</option>
@@ -1158,7 +1245,7 @@ const ControlPanel = () => {
     </select>
     <div className="button-group">
       {[1000, 2000, 3000, 5000].map((val) => (
-        <button key={val} type="button" onClick={() => handleButtonClick(val)}>
+              <button key={val} type="button">
           {val}
         </button>
       ))}
@@ -1167,42 +1254,20 @@ const ControlPanel = () => {
   </div>
 
   {/* Second Dropdown Container */}
-  <div className="dropdown-container">
-  <h3>Price</h3>
   
   {/* Dropdown */}
  
 
   {/* Value Buttons */}
-  <div className="button-group">
-    {[50, 100, 200, 500, 1000].map((val) => (
-      <button key={val} type="button" onClick={() => handleButtonClick(val)}>
-        {val}
-      </button>
-    ))}
-  </div>
-
-    {/* Extra 6 Buttons */}
-    <div className="button-group">
-      {["Kirthik", "AL", "Romish", "Adrian", "Dinesh 11", "Vinayakar"].map((label, index) => (
-        <button key={index} type="button" onClick={() => /*handleExtraButtonClick*/(label)}>
-          {label}
-        </button>
-      ))}
-    </div>
-
-
-
-    {/* Add Button */}
-    <button className="add-button">Add</button>
-  </div>
+  {/* Price Container */}
+  
 
 {/* third Dropdown Container */}
   <div className="dropdown-container">
       
       <div className="status-container">
         <label>Status:</label>
-        <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
+        <select value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)}>
         <option value="">Select</option>
         <option value="Kirthik">Kirthik</option>
         <option value="Al">Al</option>
@@ -1236,7 +1301,60 @@ const ControlPanel = () => {
         </div>
     
     </div>
+    <div className="dropdown-container">
+      <h3>Manage Team Points</h3>
+      {/* Team Selection */}
+      <select value={selectedTeam} onChange={(e) => setSelectedTeam(e.target.value)}>
+        <option value="">Select</option>
+        {Object.keys(teamPoints).map((team) => (
+          <option key={team} value={team}>
+            {team}
+          </option>
+        ))}
+      </select>
 
+      {/* Points Buttons */}
+      <div className="button-group">
+        {[1000, 2000, 3000, 5000].map((val) => (
+          <button key={val} type="button" onClick={() => handleAddPoints(val)}>
+            Add +{val} Points
+          </button>
+        ))}
+      </div>
+
+      {/* Spend Points Buttons */}
+      <div className="button-group">
+        {[1000, 2000, 3000, 5000].map((val) => (
+          <button key={val} type="button" onClick={() => handleSpendPoints(val)}>
+            Spend -{val} Points
+          </button>
+        ))}
+      </div>
+
+      {/* Display Team Points Table */}
+      <h3>Team Points</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Points</th>
+            <th>Extra Added Points</th>
+            <th>Spent Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(teamPoints).map(([team, { points, extraAddedPoints, spentPoints }]) => (
+            <tr key={team}>
+              <td>{team}</td>
+              <td>{points}</td>
+              <td>{extraAddedPoints}</td>
+              <td>{spentPoints}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  
 
 
 
