@@ -1163,9 +1163,7 @@ const ControlPanel = () => {
   <h3>Price</h3>
   
   {/* Dropdown */}
-  <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
-    <option value="">Select</option>
-  </select>
+ 
 
   {/* Value Buttons */}
   <div className="button-group">
@@ -1178,7 +1176,7 @@ const ControlPanel = () => {
 
     {/* Extra 6 Buttons */}
     <div className="button-group">
-      {["Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6"].map((label, index) => (
+      {["Kirthik", "AL", "Romish", "Adrian", "Dinesh 11", "Vinayakar"].map((label, index) => (
         <button key={index} type="button" onClick={() => /*handleExtraButtonClick*/(label)}>
           {label}
         </button>
