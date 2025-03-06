@@ -1147,6 +1147,14 @@ const ControlPanel = () => {
     <h3>Adding Points</h3>
     <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
       <option value="">Select</option>
+      <option value="Kirthik">Kirthik</option>
+        <option value="Al">Al</option>
+        <option value="Romish">Romish</option>
+        <option value="Adrian">Adrian</option>
+        <option value="Dinesh 11">Dinesh 11</option>
+        <option value="Vettryvinayakar">Vettryvinayakar</option>
+
+
     </select>
     <div className="button-group">
       {[1000, 2000, 3000, 5000].map((val) => (
@@ -1196,6 +1204,12 @@ const ControlPanel = () => {
         <label>Status:</label>
         <select value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
         <option value="">Select</option>
+        <option value="Kirthik">Kirthik</option>
+        <option value="Al">Al</option>
+        <option value="Romish">Romish</option>
+        <option value="Adrian">Adrian</option>
+        <option value="Dinesh 11">Dinesh 11</option>
+        <option value="Vettryvinayakar">Vettryvinayakar</option>
         </select>
         <div >
           <button className="add-button">Sold</button>
