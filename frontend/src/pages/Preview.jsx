@@ -117,7 +117,7 @@ const Preview = () => {
         <h1>y</h1>
         <h1>BID by</h1>
         <h1>d</h1>
-        {timerRunning && <h1>{time} seconds</h1>}
+        {timerRunning && <h1>{time} Seconds Left</h1>}
       </div>
 
       <div style={dropdownStyleRight}>
