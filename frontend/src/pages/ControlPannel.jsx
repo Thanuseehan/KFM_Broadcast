@@ -1321,7 +1321,7 @@ const ControlPanel = () => {
 
           /* Dropdown Section */
           .dropdown-container {
-            max-width: 350px;
+            max-width: auto;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
