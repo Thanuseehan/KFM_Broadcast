@@ -1057,39 +1057,42 @@ const ControlPanel = () => {
     previousTournament: "",
     imageUrl: "",
   });
-  const [selectedTeam, setSelectedTeam] = useState(""); // Stores selected team
 
   const [teamPoints, setTeamPoints] = useState({
-    "Kirthik haishu Bros 11": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
-    "AL Superkings": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
-    "Romish Rockstar": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
-    "Adrian Night": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
-    "Dinesh 11 Dominators": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
-    "VettryVinayakar": { points: 32000, extraAddedPoints: 0, spentPoints: 0 },
+    "Kirthik haishu Bros 11": { points: 32000, extraAddedPoints: 0, spentPoints: 0,currentBid: 0  },
+    "AL Superkings": { points: 32000, extraAddedPoints: 0, spentPoints: 0, currentBid: 0  },
+    "Romish Rockstar": { points: 32000, extraAddedPoints: 0, spentPoints: 0, currentBid: 0  },
+    "Adrian Night": { points: 32000, extraAddedPoints: 0, spentPoints: 0,currentBid: 0  },
+    "Dinesh 11 Dominators": { points: 32000, extraAddedPoints: 0, spentPoints: 0, currentBid: 0  },
+    "VettryVinayakar": { points: 32000, extraAddedPoints: 0, spentPoints: 0, currentBid: 0  },
   });
 
+  
   const handleAddPoints = (points) => {
     if (!selectedTeam) {
       alert("Please select a team before adding points.");
       return;
     }
-    setTeamPoints((prevPoints) => ({
-      ...prevPoints,
-      [selectedTeam]: {
-        ...prevPoints[selectedTeam],
-        extraAddedPoints: prevPoints[selectedTeam].extraAddedPoints + points,
-      },
-    }));
+    setTeamPoints((prevPoints) => {
+      const teamData = prevPoints[selectedTeam] || { points: 0, extraAddedPoints: 0, spentPoints: 0 };
+      return {
+        ...prevPoints,
+        [selectedTeam]: {
+          ...teamData,
+          extraAddedPoints: teamData.extraAddedPoints + points,
+        },
+      };
+    });
   };
-
+    const [selectedTeam, setSelectedTeam] = useState(""); // Stores selected team
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredPlayers, setFilteredPlayers] = useState(samplePlayers);
-    const [selectedAddingPoints, setSelectedAddingPoints] = useState("");
     const [selectedStatus, setSelectedStatus] = useState("");
     const [selectedBasePrice, setSelectedBasePrice] = useState(0);
     const [priceHistory, setPriceHistory] = useState([]);
     const [selectedName, setSelectedName] = useState(""); // Define state for selected name
     const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
+    
   
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -1119,19 +1122,43 @@ const ControlPanel = () => {
     });
   };
   
-  const handleSpendPoints = (points) => {
-    if (!selectedTeam) {
-      alert("Please select a team before spending points.");
-      return;
-    }
-    setTeamPoints((prevPoints) => ({
-      ...prevPoints,
-      [selectedTeam]: {
-        ...prevPoints[selectedTeam],
-        spentPoints: prevPoints[selectedTeam].spentPoints + points,
-      },
-    }));
-  };
+  
+
+    const handleSoldClick = () => {
+      if (!selectedTeam) {
+        alert("Please select a team before making a purchase.");
+        return;
+      }
+    
+      if (selectedBasePrice <= 0) {
+        alert("Invalid bid amount.");
+        return;
+      }
+    
+      setTeamPoints((prevPoints) => {
+        const teamData = prevPoints[selectedTeam] || { points: 0, extraAddedPoints: 0, spentPoints: 0 };
+    
+        // Calculate available balance
+        const availableBalance = teamData.points + teamData.extraAddedPoints - teamData.spentPoints;
+    
+        // Prevent spending more than available balance
+        if (selectedBasePrice > availableBalance) {
+          alert("Not enough balance to buy this player.");
+          return prevPoints;
+        }
+    
+        return {
+          ...prevPoints,
+          [selectedTeam]: {
+            ...teamData,
+            spentPoints: teamData.spentPoints + selectedBasePrice, // Deduct bid price
+          },
+        };
+      });
+    
+      alert(`${selectedName} is sold to ${selectedTeam} for ${selectedBasePrice} points.`);
+    };
+    
 
 
   return (
@@ -1230,28 +1257,7 @@ const ControlPanel = () => {
   </div>
 
   {/* First Dropdown Container */}
-    <div className="dropdown-container">
-     <h3>Adding Points</h3>
-       <select value={selectedAddingPoints} onChange={(e) => setSelectedAddingPoints(e.target.value)}>
-      <option value="">Select</option>
-      <option value="Kirthik">Kirthik</option>
-        <option value="Al">Al</option>
-        <option value="Romish">Romish</option>
-        <option value="Adrian">Adrian</option>
-        <option value="Dinesh 11">Dinesh 11</option>
-        <option value="Vettryvinayakar">Vettryvinayakar</option>
-
-
-    </select>
-    <div className="button-group">
-      {[1000, 2000, 3000, 5000].map((val) => (
-              <button key={val} type="button">
-          {val}
-        </button>
-      ))}
-    </div>
-    <button className="add-button">Add</button>
-  </div>
+    
 
   {/* Second Dropdown Container */}
   
@@ -1267,18 +1273,19 @@ const ControlPanel = () => {
       
       <div className="status-container">
         <label>Status:</label>
+        <p><strong>Current BID:</strong> {selectedBasePrice}</p>
+
         <select value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)}>
         <option value="">Select</option>
-        <option value="Kirthik">Kirthik</option>
-        <option value="Al">Al</option>
-        <option value="Romish">Romish</option>
-        <option value="Adrian">Adrian</option>
-        <option value="Dinesh 11">Dinesh 11</option>
-        <option value="Vettryvinayakar">Vettryvinayakar</option>
-        </select>
+        {Object.keys(teamPoints).map((team) => (
+          <option key={team} value={team}>
+            {team}
+          </option>
+        ))}
+      </select>
         <div >
-          <button className="add-button">Sold</button>
-          <button className="add-button">Unsold</button>
+        <button className="add-button" onClick={handleSoldClick}>Sold</button>
+        <button className="add-button">Unsold</button>
         </div>
       </div>
 
@@ -1337,24 +1344,32 @@ const ControlPanel = () => {
         <thead>
           <tr>
             <th>Team</th>
-            <th>Points</th>
+            <th>Initial Points</th>
             <th>Extra Added Points</th>
             <th>Spent Points</th>
+            <th>Balance Points</th> {/* New column for balance points */}
           </tr>
         </thead>
         <tbody>
-          {Object.entries(teamPoints).map(([team, { points, extraAddedPoints, spentPoints }]) => (
-            <tr key={team}>
-              <td>{team}</td>
-              <td>{points}</td>
-              <td>{extraAddedPoints}</td>
-              <td>{spentPoints}</td>
-            </tr>
-          ))}
+          {Object.entries(teamPoints).map(([team, { points, extraAddedPoints, spentPoints }]) => {
+            const balancePoints = points + extraAddedPoints - spentPoints; // Balance calculation
+            return (
+              <tr key={team}>
+                <td>{team}</td>
+                <td>{points}</td>
+                <td>{extraAddedPoints}</td>
+                <td>{spentPoints}</td>
+                <td><strong>{balancePoints}</strong></td> {/* Display balance points */}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
+
+
+      
     </div>
-  
+          
 
 
 
@@ -1545,5 +1560,6 @@ const App = () => (
     <ControlPanel />
   </TimerProvider>
 );
+
 
 export default ControlPanel;
