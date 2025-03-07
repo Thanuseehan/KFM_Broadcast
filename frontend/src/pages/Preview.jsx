@@ -7,6 +7,8 @@ import ControlPanel from "./ControlPannel"; // Ensure correct path
 const Preview = () => {
   const { time, timerRunning, startTimer, stopTimer, resetTimer } = useTimer();
 
+  
+
   const backgroundStyle = {
     backgroundImage: `url(${assets.Bgimg})`,
     backgroundSize: "cover",
